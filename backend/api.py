@@ -15,6 +15,7 @@ Run:
 from __future__ import annotations
 
 import logging
+import os
 import traceback
 from typing import Any
 
@@ -57,6 +58,15 @@ _CORS_ORIGINS: list[str] = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
 ]
+
+# Allow additional origins via environment variable (comma-separated).
+# On Render set: CORS_ORIGINS=https://your-frontend.onrender.com
+_extra_origins = os.getenv("CORS_ORIGINS", "").strip()
+if _extra_origins:
+    for _o in _extra_origins.split(","):
+        _o = _o.strip()
+        if _o and _o not in _CORS_ORIGINS:
+            _CORS_ORIGINS.append(_o)
 
 app.add_middleware(
     CORSMiddleware,

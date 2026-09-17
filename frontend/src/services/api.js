@@ -4,14 +4,20 @@
  */
 
 function getCandidateUrls(endpoint) {
-  const urls = [endpoint]; // Vite proxy: /health or /analyze
-  if (typeof window !== "undefined") {
-    const host = window.location.hostname || "localhost";
-    urls.push(`http://${host}:8000${endpoint}`);
-  }
-  urls.push(`http://127.0.0.1:8000${endpoint}`);
-  urls.push(`http://localhost:8000${endpoint}`);
-  return [...new Set(urls)];
+  const urls = [
+        `https://email-threat-analyzer-p77w.onrender.com${endpoint}`,
+        endpoint, // Vite proxy
+    ];
+
+    if (typeof window !== "undefined") {
+        const host = window.location.hostname || "localhost";
+        urls.push(`http://${host}:8000${endpoint}`);
+    }
+
+    urls.push(`http://127.0.0.1:8000${endpoint}`);
+    urls.push(`http://localhost:8000${endpoint}`);
+
+    return [...new Set(urls)];
 }
 
 export async function checkHealth() {
@@ -76,21 +82,32 @@ export async function analyzeEmail(file) {
   throw lastErr || new Error("Failed to connect to backend forensic service at http://127.0.0.1:8000");
 }
 
+/**
+ * The canonical backend base URL.
+ *
+ * - Local dev: set VITE_API_URL=http://localhost:8000 in frontend/.env
+ * - Render build: set VITE_API_URL=https://email-threat-analyzer-p77w.onrender.com
+ *
+ * Never put OAuth secrets in VITE_ vars — this is the public base URL only.
+ */
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://email-threat-analyzer-p77w.onrender.com";
+
 function getBaseUrl() {
-  // Prefer relative URL to use Vite proxy, which avoids CORS issues with cookies
-  return ""; 
+  return API_BASE_URL;
 }
 
 export async function getGmailStatus() {
   const url = `${getBaseUrl()}/gmail/status`;
-  const response = await fetch(url);
+  const response = await fetch(url, { credentials: "include" });
   if (!response.ok) throw new Error("Failed to get Gmail status");
   return await response.json();
 }
 
 export async function getGmailEmails() {
   const url = `${getBaseUrl()}/gmail/emails`;
-  const response = await fetch(url);
+  const response = await fetch(url, { credentials: "include" });
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.detail || "Failed to fetch Gmail inbox");
@@ -100,7 +117,7 @@ export async function getGmailEmails() {
 
 export async function analyzeGmailMessage(messageId) {
   const url = `${getBaseUrl()}/gmail/analyze/${messageId}`;
-  const response = await fetch(url, { method: "POST" });
+  const response = await fetch(url, { method: "POST", credentials: "include" });
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.detail || "Failed to analyze Gmail message");

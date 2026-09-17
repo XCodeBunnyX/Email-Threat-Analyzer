@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Mail, RefreshCw, AlertCircle, ShieldAlert, CheckCircle, Search, Inbox, Activity } from "lucide-react";
-import { getGmailStatus, getGmailEmails } from "../services/api";
+import { getGmailStatus, getGmailEmails, API_BASE_URL } from "../services/api";
 import { useAnalysis } from "../context/AnalysisContext";
 import AnalysisLoader from "../components/AnalysisLoader";
 
@@ -66,8 +66,13 @@ export default function GmailInboxPage() {
   };
 
   const handleConnect = () => {
-    // Redirect browser to backend OAuth initiation endpoint via Vite proxy
-    window.location.href = "/gmail/auth";
+    // Navigate the browser directly to the backend OAuth start endpoint.
+    // API_BASE_URL comes from VITE_API_URL env var:
+    //   - Local dev: http://localhost:8000  (also proxied by Vite for API calls)
+    //   - Render:    https://email-threat-analyzer-p77w.onrender.com
+    // This MUST be a browser navigation (window.location), NOT fetch(),
+    // because the backend issues a 302 redirect to Google's consent screen.
+    window.location.href = `${API_BASE_URL}/gmail/auth`;
   };
 
   const handleAnalyze = async (messageId, subject) => {

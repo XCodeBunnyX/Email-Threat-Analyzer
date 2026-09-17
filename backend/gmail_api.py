@@ -15,8 +15,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Allow HTTP for local OAuth development
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+# Allow HTTP only for local development.
+# When GMAIL_REDIRECT_URI starts with https (i.e. on Render) this MUST NOT be set,
+# otherwise oauthlib treats the https callback as if it needs the insecure override.
+_redirect_uri_env = os.getenv("GMAIL_REDIRECT_URI", "http://localhost:8000/gmail/callback").strip()
+if _redirect_uri_env.startswith("http://"):
+    os.environ.setdefault("OAUTHLIB_INSECURE_TRANSPORT", "1")
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response
 from fastapi.responses import RedirectResponse
@@ -154,12 +158,19 @@ async def gmail_callback(request: Request, response: Response, code: str = None,
         session_id = str(uuid.uuid4())
         _SESSION_STORE[session_id] = json.loads(creds.to_json())
         
+        # Use SameSite=None and Secure=True for cross-site HTTPS/production deployments (Render)
+        # Use SameSite=Lax and Secure=False for local HTTP development
+        is_https = conf["redirect_uri"].startswith("https://") or conf["frontend_url"].startswith("https://")
+        cookie_samesite = "none" if is_https else "lax"
+        cookie_secure = True if is_https else False
+
         redirect = RedirectResponse(url=f"{conf['frontend_url']}/inbox")
         redirect.set_cookie(
             key="gmail_session",
             value=session_id,
             httponly=True,
-            samesite="lax",
+            secure=cookie_secure,
+            samesite=cookie_samesite,
             max_age=30 * 24 * 60 * 60,
         )
         return redirect
@@ -181,9 +192,14 @@ async def gmail_status(gmail_session: str | None = Cookie(default=None)):
 
 @gmail_router.post("/disconnect")
 async def gmail_disconnect(response: Response, gmail_session: str | None = Cookie(default=None)):
+    conf = get_gcp_config()
+    is_https = conf["redirect_uri"].startswith("https://") or conf["frontend_url"].startswith("https://")
+    cookie_samesite = "none" if is_https else "lax"
+    cookie_secure = True if is_https else False
+
     if gmail_session and gmail_session in _SESSION_STORE:
         del _SESSION_STORE[gmail_session]
-    response.delete_cookie("gmail_session")
+    response.delete_cookie("gmail_session", secure=cookie_secure, samesite=cookie_samesite)
     return {"status": "success", "message": "Disconnected"}
 
 
