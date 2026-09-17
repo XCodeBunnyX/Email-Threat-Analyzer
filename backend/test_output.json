@@ -1,0 +1,1500 @@
+{
+  "threat_score": 70,
+  "verdict": "HIGH_RISK",
+  "email": {
+    "from": "\"HDFC Bank Security\" <security-alert@hdfcbank-secure.co.in>",
+    "sender_email": "security-alert@hdfcbank-secure.co.in",
+    "sender_name": "HDFC Bank Security",
+    "sender_domain": "hdfcbank-secure.co.in",
+    "reply_to": "noreply@hdfcbank-secure.co.in",
+    "to": [
+      "victim@example.com"
+    ],
+    "subject": "[URGENT] Your HDFC NetBanking Account Has Been Suspended",
+    "date": "Thu, 03 Sep 2026 08:14:22 +0000",
+    "message_id": "<20260903081422.7A3F2@hdfcbank-secure.co.in>"
+  },
+  "authentication": {
+    "spf": "FAIL",
+    "dkim": "NONE",
+    "dmarc": "FAIL",
+    "spf_detail": "spf=fail (sender IP is 185.234.219.47)\n smtp.mailfrom=security@hdfcbank-secure.co.in",
+    "dkim_detail": "dkim=none",
+    "dmarc_detail": "dmarc=fail (p=reject; dis=none) header.from=hdfcbank-secure.co.in",
+    "summary": "Authentication failure(s): SPF=FAIL, DMARC=FAIL."
+  },
+  "infrastructure": {
+    "forensic_scope": "Physical attribution is outside the scope of email-header analysis and may require additional evidence and lawful investigative processes.",
+    "upstream_relay_ip": "185.234.219.47",
+    "candidate_relays": [
+      {
+        "ip": "185.234.219.47",
+        "tier": 1,
+        "tier_name": "RECIPIENT_MTA_OBSERVED",
+        "confidence": "high",
+        "source_header": "Received",
+        "hop_number": 2,
+        "provider": "Unknown",
+        "ranking_disclaimer": "Ranking reflects observational proximity and trust boundaries, NOT definitive proof of sender origin."
+      }
+    ],
+    "timeline_analysis": {
+      "status": "consistent",
+      "tolerance_seconds": 120,
+      "hop_deltas": [
+        {
+          "from_hop": 1,
+          "to_hop": 2,
+          "delta_seconds": 131.0
+        }
+      ],
+      "anomalies": []
+    },
+    "chronological_hops": [
+      {
+        "hop_number": 1,
+        "from_host": "unknown",
+        "by_host": "hdfcbank-secure.co.in",
+        "ip": "192.168.1.105",
+        "provider": "Unknown",
+        "is_private": true,
+        "is_upstream_origin": false,
+        "raw": "from [192.168.1.105] (unknown [103.21.244.0]) by hdfcbank-secure.co.in\n (Postfix) with ESMTP; Thu, 03 Sep 2026 08:12:11 +0000",
+        "timestamp_raw": "Thu, 03 Sep 2026 08:12:11 +0000",
+        "timestamp_utc": "2026-09-03T08:12:11+00:00",
+        "provenance": "UNVERIFIED_UPSTREAM_HOP",
+        "confidence": "low",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "hop_number": 2,
+        "from_host": "mail.hdfcbank-secure.co.in",
+        "by_host": "mx.example.com",
+        "ip": "185.234.219.47",
+        "provider": "Unknown",
+        "is_private": false,
+        "is_upstream_origin": true,
+        "raw": "from mail.hdfcbank-secure.co.in (185.234.219.47) by mx.example.com\n (8.15.2/8.15.2) with ESMTP id 3038E4K7063821; Thu, 03 Sep 2026 08:14:22 GMT",
+        "timestamp_raw": "Thu, 03 Sep 2026 08:14:22 GMT",
+        "timestamp_utc": "2026-09-03T08:14:22+00:00",
+        "provenance": "RECIPIENT_MTA_OBSERVED",
+        "confidence": "high",
+        "evidence_class": "DERIVED"
+      }
+    ],
+    "client_fingerprint": {
+      "mailer": "PHPMailer 6.1.8",
+      "mailer_category": "Programmatic / Automated Sender",
+      "user_agent": "Not specified",
+      "mime_boundary_style": "Generic Multipart",
+      "charsets_detected": [
+        "utf-8"
+      ],
+      "languages_detected": [],
+      "fingerprint_summary": "Programmatic / Automated Sender ('PHPMailer 6.1.8'); MIME pattern: Generic Multipart; Charsets: utf-8",
+      "evidence_class": "HEURISTIC",
+      "charset_disclaimer": "Character encoding represents byte serialization format and operating system defaults; it does not indicate sender nationality or geographic location."
+    },
+    "timezone_correlation": null,
+    "x_originating_ip": "185.234.219.47",
+    "x_mailer": "PHPMailer 6.1.8",
+    "relay_chain": [
+      {
+        "from_host": "mail.hdfcbank-secure.co.in",
+        "by_host": "mx.example.com",
+        "ip": "185.234.219.47",
+        "provider": "Unknown"
+      },
+      {
+        "from_host": "unknown",
+        "by_host": "hdfcbank-secure.co.in",
+        "ip": "192.168.1.105",
+        "provider": "Unknown"
+      }
+    ],
+    "identified_providers": [],
+    "infrastructure_note": "Email passed through 2 observable relay hop(s) via unidentified infrastructure. Primary observed relay IP: 185.234.219.47. (from X-Originating-IP: 185.234.219.47) Note: observable IPs represent mail relay infrastructure, not the sender's physical location.",
+    "public_ips": [
+      "185.234.219.47",
+      "103.21.244.0"
+    ],
+    "ip_records": [
+      {
+        "ip": "185.234.219.47",
+        "reputation": "malicious",
+        "reputation_score": 95,
+        "categories": [
+          "Phishing Host",
+          "Bulletproof Hosting"
+        ],
+        "source": "MOCK_INTEL",
+        "is_observable_infra": true
+      },
+      {
+        "ip": "103.21.244.0",
+        "reputation": "clean",
+        "reputation_score": 5,
+        "categories": [],
+        "source": "MOCK_INTEL",
+        "is_observable_infra": true
+      }
+    ],
+    "geolocation": [
+      {
+        "ip": "185.234.219.47",
+        "country": "UNKNOWN",
+        "region": "UNKNOWN",
+        "city": "UNKNOWN",
+        "latitude": null,
+        "longitude": null,
+        "lat": null,
+        "lon": null,
+        "postal": null,
+        "timezone": null,
+        "asn": "UNKNOWN",
+        "organization": "UNKNOWN",
+        "isp": "UNKNOWN",
+        "org": "UNKNOWN",
+        "hostname": null,
+        "network": null,
+        "source": "IPinfo",
+        "status": "unavailable",
+        "location_type": "observable_infrastructure",
+        "location_note": "IP geolocation represents the approximate location of the observed network infrastructure and may not represent the sender's physical location.",
+        "forensic_note": "IP geolocation represents the approximate location of the observed network infrastructure and may not represent the sender's physical location.",
+        "reason": "IPinfo API token is not configured"
+      },
+      {
+        "ip": "103.21.244.0",
+        "country": "UNKNOWN",
+        "region": "UNKNOWN",
+        "city": "UNKNOWN",
+        "latitude": null,
+        "longitude": null,
+        "lat": null,
+        "lon": null,
+        "postal": null,
+        "timezone": null,
+        "asn": "UNKNOWN",
+        "organization": "UNKNOWN",
+        "isp": "UNKNOWN",
+        "org": "UNKNOWN",
+        "hostname": null,
+        "network": null,
+        "source": "IPinfo",
+        "status": "unavailable",
+        "location_type": "observable_infrastructure",
+        "location_note": "IP geolocation represents the approximate location of the observed network infrastructure and may not represent the sender's physical location.",
+        "forensic_note": "IP geolocation represents the approximate location of the observed network infrastructure and may not represent the sender's physical location.",
+        "reason": "IPinfo API token is not configured"
+      }
+    ],
+    "reply_to_differs": false
+  },
+  "domain": {
+    "domain": "hdfcbank-secure.co.in",
+    "reputation": "malicious",
+    "reputation_score": 95,
+    "categories": [
+      "Typosquatting",
+      "Brand Impersonation",
+      "Phishing"
+    ],
+    "age_days": 19,
+    "registrar": "GoDaddy LLC",
+    "virustotal_flags": 41,
+    "is_suspicious_tld": false,
+    "is_typosquat": false,
+    "typosquat_target": "",
+    "risk_score": 70,
+    "reasons": [
+      "Domain 'hdfcbank-secure.co.in' has malicious reputation (categories: ['Typosquatting', 'Brand Impersonation', 'Phishing'], source: MOCK_INTEL).",
+      "Domain 'hdfcbank-secure.co.in' is very new (19 days old) \u2014 recently registered domains are commonly used in phishing."
+    ]
+  },
+  "urls": {
+    "count": 3,
+    "suspicious": 3,
+    "all_urls": [
+      "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+      "http://bit.ly/3xHDFC-verify",
+      "https://185.234.219.47/phish/hdfc/login.php"
+    ],
+    "findings": [
+      {
+        "url": "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+        "domain": "hdfc-secure-verify.co.in",
+        "tld": ".in",
+        "risk_score": 55,
+        "is_ip_url": false,
+        "is_url_shortener": false,
+        "has_suspicious_tld": false,
+        "excessive_subdomains": false,
+        "has_suspicious_chars": true,
+        "uses_https": false,
+        "display_href_mismatch": false,
+        "domain_reputation": "malicious",
+        "domain_rep_score": 93,
+        "reasons": [
+          "Suspicious characters in URL path: ['//'].",
+          "URL uses HTTP (not HTTPS) \u2014 traffic is unencrypted.",
+          "Domain 'hdfc-secure-verify.co.in' has malicious reputation (MOCK_INTEL)."
+        ]
+      },
+      {
+        "url": "http://bit.ly/3xHDFC-verify",
+        "domain": "bit.ly",
+        "tld": ".ly",
+        "risk_score": 50,
+        "is_ip_url": false,
+        "is_url_shortener": true,
+        "has_suspicious_tld": false,
+        "excessive_subdomains": false,
+        "has_suspicious_chars": true,
+        "uses_https": false,
+        "display_href_mismatch": false,
+        "domain_reputation": "unknown",
+        "domain_rep_score": 50,
+        "reasons": [
+          "URL shortener detected (bit.ly): hides true destination.",
+          "Suspicious characters in URL path: ['//'].",
+          "URL uses HTTP (not HTTPS) \u2014 traffic is unencrypted."
+        ]
+      },
+      {
+        "url": "https://185.234.219.47/phish/hdfc/login.php",
+        "domain": "185.234.219.47",
+        "tld": ".47",
+        "risk_score": 45,
+        "is_ip_url": true,
+        "is_url_shortener": false,
+        "has_suspicious_tld": false,
+        "excessive_subdomains": false,
+        "has_suspicious_chars": true,
+        "uses_https": true,
+        "display_href_mismatch": false,
+        "domain_reputation": "unknown",
+        "domain_rep_score": 50,
+        "reasons": [
+          "IP address used directly as URL (bypasses domain reputation).",
+          "Suspicious characters in URL path: ['//']."
+        ]
+      }
+    ],
+    "limitations": [
+      "URLs are analyzed by static features only \u2014 no HTTP requests are made.",
+      "URL shorteners hide the true destination; only the shortener domain is analyzed."
+    ]
+  },
+  "attachments": {
+    "count": 1,
+    "suspicious": 1,
+    "findings": [
+      {
+        "filename": "AccountSuspensionNotice.pdf.exe",
+        "extension": ".exe",
+        "content_type": "application/pdf",
+        "size_bytes": 22,
+        "size_mb": 0.0,
+        "risk_score": 90,
+        "is_dangerous_extension": true,
+        "is_archive": false,
+        "is_macro_enabled": false,
+        "has_double_extension": true,
+        "suspicious_filename_keywords": [
+          "account"
+        ],
+        "magic_byte_matches": [
+          "Windows PE executable (EXE/DLL)"
+        ],
+        "size_exceeds_limit": false,
+        "mime_extension_mismatch": true,
+        "reasons": [
+          "File extension '.exe' is inherently dangerous (executable, script, or macro-enabled document).",
+          "Double extension detected in 'AccountSuspensionNotice.pdf.exe' \u2014 common technique to disguise executable files.",
+          "Filename contains social-engineering keywords: ['account'].",
+          "MIME type 'application/pdf' does not match file extension '.exe' \u2014 possible disguised file."
+        ]
+      }
+    ]
+  },
+  "ml": {
+    "prediction": "UNKNOWN",
+    "decision_score": null,
+    "model_available": false,
+    "note": "ML model files not found at 'models/gmailguard_svm.pkl' / 'models/gmailguard_tfidf.pkl'. Drop gmailguard_svm.pkl and gmailguard_tfidf.pkl into the backend/models/ directory to enable ML classification. Other signals are still used for scoring."
+  },
+  "evidence": [
+    {
+      "signal": "SPF",
+      "status": "FAIL",
+      "impact": "HIGH",
+      "explanation": "SPF FAIL: email authentication alignment failed."
+    },
+    {
+      "signal": "DMARC",
+      "status": "FAIL",
+      "impact": "HIGH",
+      "explanation": "DMARC FAIL: email authentication alignment failed."
+    },
+    {
+      "signal": "IP Reputation",
+      "status": "MALICIOUS",
+      "impact": "HIGH",
+      "explanation": "Observable relay IP 185.234.219.47 has malicious reputation (categories: ['Phishing Host', 'Bulletproof Hosting'], source: MOCK_INTEL). This is relay infrastructure, not necessarily the sender's device."
+    },
+    {
+      "signal": "Domain Intelligence",
+      "status": "MALICIOUS",
+      "impact": "HIGH",
+      "explanation": "Domain 'hdfcbank-secure.co.in' has malicious reputation (categories: ['Typosquatting', 'Brand Impersonation', 'Phishing'], source: MOCK_INTEL)."
+    },
+    {
+      "signal": "Domain Intelligence",
+      "status": "MALICIOUS",
+      "impact": "HIGH",
+      "explanation": "Domain 'hdfcbank-secure.co.in' is very new (19 days old) \u2014 recently registered domains are commonly used in phishing."
+    },
+    {
+      "signal": "Attachment Analysis",
+      "status": "SUSPICIOUS",
+      "impact": "HIGH",
+      "explanation": "Attachment 'AccountSuspensionNotice.pdf.exe' \u2014 File extension '.exe' is inherently dangerous (executable, script, or macro-enabled document).; Double extension detected in 'AccountSuspensionNotice.pdf.exe' \u2014 common technique to disguise executable files.; Filename contains social-engineering keywords: ['account']."
+    },
+    {
+      "signal": "URL Analysis",
+      "status": "SUSPICIOUS",
+      "impact": "MEDIUM",
+      "explanation": "URL 'http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ' \u2014 Suspicious characters in URL path: ['//'].; URL uses HTTP (not HTTPS) \u2014 traffic is unencrypted.; Domain 'hdfc-secure-verify.co.in' has malicious reputation (MOCK_INTEL)."
+    },
+    {
+      "signal": "URL Analysis",
+      "status": "SUSPICIOUS",
+      "impact": "MEDIUM",
+      "explanation": "URL 'http://bit.ly/3xHDFC-verify' \u2014 URL shortener detected (bit.ly): hides true destination.; Suspicious characters in URL path: ['//'].; URL uses HTTP (not HTTPS) \u2014 traffic is unencrypted."
+    },
+    {
+      "signal": "URL Analysis",
+      "status": "SUSPICIOUS",
+      "impact": "MEDIUM",
+      "explanation": "URL 'https://185.234.219.47/phish/hdfc/login.php' \u2014 IP address used directly as URL (bypasses domain reputation).; Suspicious characters in URL path: ['//']."
+    }
+  ],
+  "positive_evidence": [
+    {
+      "signal": "IP Reputation",
+      "status": "CLEAN",
+      "impact": "POSITIVE",
+      "explanation": "Observable relay IP 103.21.244.0 has clean reputation."
+    }
+  ],
+  "sub_scores": {
+    "ml": 50,
+    "authentication": 77,
+    "ip": 95,
+    "domain": 70,
+    "url": 68,
+    "attachment": 90
+  },
+  "weights_used": {
+    "ml": 0.3,
+    "authentication": 0.2,
+    "url": 0.2,
+    "ip": 0.1,
+    "domain": 0.1,
+    "attachment": 0.1
+  },
+  "limitations": [
+    "Observable IPs represent mail relay infrastructure only \u2014 they do NOT indicate the sender's physical device location.",
+    "URLs are analyzed by static features only \u2014 no HTTP requests are made.",
+    "URL shorteners hide the true destination; only the shortener domain is analyzed.",
+    "ML model files not found at 'models/gmailguard_svm.pkl' / 'models/gmailguard_tfidf.pkl'. Drop gmailguard_svm.pkl and gmailguard_tfidf.pkl into the backend/models/ directory to enable ML classification. Other signals are still used for scoring."
+  ],
+  "forensics": {
+    "domains": [
+      {
+        "domain": "hdfcbank-secure.co.in",
+        "data_source": "Mock/Demo",
+        "current_dns": {
+          "A": [
+            "185.234.219.47"
+          ],
+          "AAAA": [],
+          "MX": [],
+          "NS": [
+            "ns1.freenom.com",
+            "ns2.freenom.com"
+          ],
+          "CNAME": [],
+          "TXT": []
+        },
+        "historical_dns": {
+          "A": [
+            {
+              "value": "91.219.236.14",
+              "first_seen": "2026-08-10",
+              "last_seen": "2026-08-14"
+            }
+          ],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "CNAME": []
+        },
+        "historical_ips": [
+          {
+            "ip": "91.219.236.14",
+            "first_seen": "2026-08-10",
+            "last_seen": "2026-08-14"
+          },
+          {
+            "ip": "185.234.219.47",
+            "first_seen": "2026-09-01",
+            "last_seen": "2026-09-03"
+          }
+        ],
+        "whois_history": [
+          {
+            "registrar": "GoDaddy LLC",
+            "registered": "2026-08-15",
+            "updated": "2026-08-15",
+            "expires": "2027-08-15",
+            "nameservers": [
+              "ns1.freenom.com",
+              "ns2.freenom.com"
+            ]
+          }
+        ],
+        "security_history": {
+          "previously_detected": true,
+          "currently_detected": true,
+          "detections": [
+            {
+              "date": "2026-08-20",
+              "category": "Phishing",
+              "provider": "Mock/Demo"
+            },
+            {
+              "date": "2026-09-01",
+              "category": "Brand Impersonation",
+              "provider": "Mock/Demo"
+            }
+          ]
+        },
+        "timeline": [
+          {
+            "date": "2026-08-10",
+            "event": "IP observed",
+            "value": "91.219.236.14",
+            "source": "Mock/Demo"
+          },
+          {
+            "date": "2026-08-15",
+            "event": "Domain registered",
+            "value": "GoDaddy LLC",
+            "source": "Mock/Demo"
+          },
+          {
+            "date": "2026-08-20",
+            "event": "Security detection observed",
+            "value": "Phishing",
+            "source": "Mock/Demo"
+          },
+          {
+            "date": "2026-09-01",
+            "event": "IP observed",
+            "value": "185.234.219.47",
+            "source": "Mock/Demo"
+          },
+          {
+            "date": "2026-09-01",
+            "event": "IP changed",
+            "value": "185.234.219.47",
+            "source": "Mock/Demo"
+          },
+          {
+            "date": "2026-09-01",
+            "event": "Security detection observed",
+            "value": "Brand Impersonation",
+            "source": "Mock/Demo"
+          }
+        ],
+        "evidence": [
+          {
+            "type": "ip_change",
+            "severity": "medium",
+            "description": "Domain 'hdfcbank-secure.co.in' IP address changed.",
+            "evidence": {
+              "old_value": "91.219.236.14",
+              "new_value": "185.234.219.47",
+              "observed_at": "2026-09-01"
+            },
+            "source": "Mock/Demo"
+          },
+          {
+            "type": "historical_detection",
+            "severity": "high",
+            "description": "Domain 'hdfcbank-secure.co.in' has historical security detection(s). Use terminology: 'Previously detected' \u2014 not 'blocked globally'.",
+            "evidence": {
+              "detection_count": 2,
+              "categories": [
+                "Brand Impersonation",
+                "Phishing"
+              ]
+            },
+            "source": "Mock/Demo"
+          },
+          {
+            "type": "current_detection",
+            "severity": "high",
+            "description": "Domain 'hdfcbank-secure.co.in' is currently detected by at least one intelligence provider. This does not mean universally blocked.",
+            "evidence": {
+              "detection_count": 2
+            },
+            "source": "Mock/Demo"
+          }
+        ],
+        "limitations": []
+      },
+      {
+        "domain": "hdfc-secure-verify.co.in",
+        "data_source": "Mock/Demo",
+        "current_dns": {
+          "A": [],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "CNAME": [],
+          "TXT": []
+        },
+        "historical_dns": {
+          "A": [],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "CNAME": []
+        },
+        "historical_ips": [],
+        "whois_history": [],
+        "security_history": {
+          "previously_detected": false,
+          "currently_detected": false,
+          "detections": []
+        },
+        "timeline": [],
+        "evidence": [],
+        "limitations": [
+          "Domain 'hdfc-secure-verify.co.in' is not in the Mock/Demo database. No historical record observed (mock mode)."
+        ]
+      },
+      {
+        "domain": "bit.ly",
+        "data_source": "Mock/Demo",
+        "current_dns": {
+          "A": [],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "CNAME": [],
+          "TXT": []
+        },
+        "historical_dns": {
+          "A": [],
+          "AAAA": [],
+          "MX": [],
+          "NS": [],
+          "CNAME": []
+        },
+        "historical_ips": [],
+        "whois_history": [],
+        "security_history": {
+          "previously_detected": false,
+          "currently_detected": false,
+          "detections": []
+        },
+        "timeline": [],
+        "evidence": [],
+        "limitations": [
+          "Domain 'bit.ly' is not in the Mock/Demo database. No historical record observed (mock mode)."
+        ]
+      }
+    ],
+    "limitations": [
+      "Forensic domain intelligence is running in Mock/Demo mode. Data is illustrative only \u2014 set MOCK_THREAT_INTEL=false and provide VIRUSTOTAL_API_KEY for live intelligence.",
+      "Domain 'bit.ly' is not in the Mock/Demo database. No historical record observed (mock mode).",
+      "Domain 'hdfc-secure-verify.co.in' is not in the Mock/Demo database. No historical record observed (mock mode).",
+      "Indicator has no prior entries in demonstration database.",
+      "Passive analysis only: Live HTTP redirection was not traversed to prevent payload execution.",
+      "No security observations reported in demo database for this URL."
+    ],
+    "osint": {
+      "domains": [
+        {
+          "indicator": "bit.ly",
+          "indicator_type": "domain",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "dns": {
+              "A": [],
+              "AAAA": [],
+              "MX": [],
+              "NS": [],
+              "CNAME": [],
+              "TXT": []
+            },
+            "registration": {
+              "registrar": "Unavailable",
+              "registered": "Unavailable",
+              "expires": "Unavailable"
+            },
+            "reputation": {
+              "previously_detected": false,
+              "currently_detected": false
+            }
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": []
+          },
+          "security_observations": [],
+          "related_infrastructure": [],
+          "timeline": [],
+          "evidence": [],
+          "limitations": [
+            "Domain 'bit.ly' is not in the Mock/Demo database. No historical record observed (mock mode)."
+          ]
+        },
+        {
+          "indicator": "hdfc-secure-verify.co.in",
+          "indicator_type": "domain",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "dns": {
+              "A": [],
+              "AAAA": [],
+              "MX": [],
+              "NS": [],
+              "CNAME": [],
+              "TXT": []
+            },
+            "registration": {
+              "registrar": "Unavailable",
+              "registered": "Unavailable",
+              "expires": "Unavailable"
+            },
+            "reputation": {
+              "previously_detected": false,
+              "currently_detected": false
+            }
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": []
+          },
+          "security_observations": [],
+          "related_infrastructure": [],
+          "timeline": [],
+          "evidence": [],
+          "limitations": [
+            "Domain 'hdfc-secure-verify.co.in' is not in the Mock/Demo database. No historical record observed (mock mode)."
+          ]
+        },
+        {
+          "indicator": "hdfcbank-secure.co.in",
+          "indicator_type": "sender_domain",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "dns": {
+              "A": [
+                "185.234.219.47"
+              ],
+              "AAAA": [],
+              "MX": [],
+              "NS": [
+                "ns1.freenom.com",
+                "ns2.freenom.com"
+              ],
+              "CNAME": [],
+              "TXT": []
+            },
+            "registration": {
+              "registrar": "GoDaddy LLC",
+              "registered": "2026-08-15",
+              "expires": "2027-08-15"
+            },
+            "reputation": {
+              "previously_detected": true,
+              "currently_detected": true
+            }
+          },
+          "historical_information": {
+            "dns": [
+              {
+                "type": "A",
+                "value": "91.219.236.14",
+                "first_seen": "2026-08-10",
+                "last_seen": "2026-08-14"
+              }
+            ],
+            "ips": [
+              {
+                "ip": "91.219.236.14",
+                "first_seen": "2026-08-10",
+                "last_seen": "2026-08-14"
+              },
+              {
+                "ip": "185.234.219.47",
+                "first_seen": "2026-09-01",
+                "last_seen": "2026-09-03"
+              }
+            ],
+            "nameservers": [
+              "ns1.freenom.com",
+              "ns2.freenom.com"
+            ],
+            "whois": [
+              {
+                "registrar": "GoDaddy LLC",
+                "registered": "2026-08-15",
+                "updated": "2026-08-15",
+                "expires": "2027-08-15",
+                "nameservers": [
+                  "ns1.freenom.com",
+                  "ns2.freenom.com"
+                ]
+              }
+            ]
+          },
+          "security_observations": [
+            {
+              "date": "2026-08-20",
+              "category": "Phishing",
+              "provider": "Mock/Demo",
+              "finding": "Security observation detected: Phishing"
+            },
+            {
+              "date": "2026-09-01",
+              "category": "Brand Impersonation",
+              "provider": "Mock/Demo",
+              "finding": "Security observation detected: Brand Impersonation"
+            }
+          ],
+          "related_infrastructure": [
+            {
+              "relationship": "Observable Mail / Host Infrastructure IP",
+              "target": "185.234.219.47",
+              "source": "Mock/Demo"
+            }
+          ],
+          "timeline": [
+            {
+              "date": "2026-08-10",
+              "event": "IP observed",
+              "value": "91.219.236.14",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-08-15",
+              "event": "Domain registered",
+              "value": "GoDaddy LLC",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-08-20",
+              "event": "Security detection observed",
+              "value": "Phishing",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-09-01",
+              "event": "IP observed",
+              "value": "185.234.219.47",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-09-01",
+              "event": "IP changed",
+              "value": "185.234.219.47",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-09-01",
+              "event": "Security detection observed",
+              "value": "Brand Impersonation",
+              "source": "Mock/Demo"
+            }
+          ],
+          "evidence": [
+            {
+              "source": "OSINT/Domain",
+              "finding": "Domain 'hdfcbank-secure.co.in' IP address changed.",
+              "severity": "medium"
+            },
+            {
+              "source": "OSINT/Domain",
+              "finding": "Domain 'hdfcbank-secure.co.in' has historical security detection(s). Use terminology: 'Previously detected' \u2014 not 'blocked globally'.",
+              "severity": "high"
+            },
+            {
+              "source": "OSINT/Domain",
+              "finding": "Domain 'hdfcbank-secure.co.in' is currently detected by at least one intelligence provider. This does not mean universally blocked.",
+              "severity": "high"
+            }
+          ],
+          "limitations": []
+        }
+      ],
+      "ips": [
+        {
+          "indicator": "103.21.244.0",
+          "indicator_type": "ip",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "reverse_dns": "None",
+            "asn": "AS0",
+            "isp": "Demonstration Network Provider",
+            "org": "Demonstration Network",
+            "country": "Unknown",
+            "city": "Unknown",
+            "reputation": "unknown"
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": [],
+            "historical_hostnames": []
+          },
+          "security_observations": [],
+          "related_infrastructure": [],
+          "timeline": [],
+          "evidence": [],
+          "limitations": [
+            "Indicator has no prior entries in demonstration database."
+          ]
+        },
+        {
+          "indicator": "185.234.219.47",
+          "indicator_type": "ip",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "reverse_dns": "mail-relay47.bulletproof-host.xyz",
+            "asn": "AS64496",
+            "isp": "Bulletproof Hosting Ltd",
+            "org": "AS64496 Bulletproof Networks",
+            "country": "Russia",
+            "city": "Moscow",
+            "reputation": "suspicious"
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": [],
+            "historical_hostnames": [
+              {
+                "hostname": "srv1.fast-hosting.ru",
+                "first_seen": "2025-06-01",
+                "last_seen": "2026-01-15"
+              }
+            ]
+          },
+          "security_observations": [
+            {
+              "date": "2026-08-20",
+              "category": "Observed Mail Infrastructure in Phishing Campaign",
+              "provider": "Mock/Demo",
+              "finding": "Previously reported in credential harvesting email distribution."
+            },
+            {
+              "date": "2026-09-01",
+              "category": "Observable High-Volume Spam Source",
+              "provider": "Mock/Demo",
+              "finding": "Security observation detected: listed by multiple DNSBLs."
+            }
+          ],
+          "related_infrastructure": [
+            {
+              "relationship": "Same IP observed hosting other domains",
+              "target": "login-verify-account.top",
+              "source": "Mock/Demo"
+            },
+            {
+              "relationship": "Same ASN/Network provider",
+              "target": "AS64496 (Bulletproof Hosting Ltd)",
+              "source": "Mock/Demo"
+            }
+          ],
+          "timeline": [
+            {
+              "date": "2025-06-01",
+              "event": "Hostname Observed",
+              "value": "srv1.fast-hosting.ru",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-08-20",
+              "event": "Security observation detected",
+              "value": "Reported in phishing campaign",
+              "source": "Mock/Demo"
+            },
+            {
+              "date": "2026-09-01",
+              "event": "Reverse DNS Updated",
+              "value": "mail-relay47.bulletproof-host.xyz",
+              "source": "Mock/Demo"
+            }
+          ],
+          "evidence": [
+            {
+              "source": "OSINT/IP",
+              "finding": "Observable mail infrastructure IP is hosted on known bulletproof provider.",
+              "severity": "medium"
+            },
+            {
+              "source": "OSINT/IP",
+              "finding": "Previous security observations detected in spam/phishing distributions.",
+              "severity": "medium"
+            }
+          ],
+          "limitations": []
+        }
+      ],
+      "urls": [
+        {
+          "indicator": "http://bit.ly/3xHDFC-verify",
+          "indicator_type": "url",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "domain": "bit.ly",
+            "reputation": "suspicious",
+            "detection_count": 4,
+            "total_engines": 72,
+            "categories": [
+              "URL Shortener",
+              "Potential Phishing Redirect"
+            ]
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": []
+          },
+          "security_observations": [
+            {
+              "date": "2026-09-02",
+              "category": "Phishing Redirect",
+              "provider": "Mock/Demo",
+              "finding": "Previously reported URL masking destination hdfcbank-secure.co.in"
+            }
+          ],
+          "related_infrastructure": [
+            {
+              "relationship": "Target redirect domain observed",
+              "target": "hdfcbank-secure.co.in",
+              "source": "Mock/Demo"
+            }
+          ],
+          "timeline": [
+            {
+              "date": "2026-09-02",
+              "event": "Security observation detected",
+              "value": "Reported as phishing redirect masking destination",
+              "source": "Mock/Demo"
+            }
+          ],
+          "evidence": [
+            {
+              "source": "OSINT/URL",
+              "finding": "URL shortener mask detected with previous security observations.",
+              "severity": "high"
+            }
+          ],
+          "limitations": [
+            "Passive analysis only: Live HTTP redirection was not traversed to prevent payload execution."
+          ]
+        },
+        {
+          "indicator": "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+          "indicator_type": "url",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "domain": "",
+            "reputation": "unknown",
+            "detection_count": 0,
+            "total_engines": 70,
+            "categories": []
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": []
+          },
+          "security_observations": [],
+          "related_infrastructure": [],
+          "timeline": [],
+          "evidence": [],
+          "limitations": [
+            "No security observations reported in demo database for this URL."
+          ]
+        },
+        {
+          "indicator": "https://185.234.219.47/phish/hdfc/login.php",
+          "indicator_type": "url",
+          "data_source": "Mock/Demo",
+          "current_information": {
+            "domain": "",
+            "reputation": "unknown",
+            "detection_count": 0,
+            "total_engines": 70,
+            "categories": []
+          },
+          "historical_information": {
+            "dns": [],
+            "ips": [],
+            "nameservers": [],
+            "whois": []
+          },
+          "security_observations": [],
+          "related_infrastructure": [],
+          "timeline": [],
+          "evidence": [],
+          "limitations": [
+            "No security observations reported in demo database for this URL."
+          ]
+        }
+      ],
+      "data_source": "Mock/Demo",
+      "limitations": [
+        "Domain 'bit.ly' is not in the Mock/Demo database. No historical record observed (mock mode).",
+        "Domain 'hdfc-secure-verify.co.in' is not in the Mock/Demo database. No historical record observed (mock mode).",
+        "Indicator has no prior entries in demonstration database.",
+        "Passive analysis only: Live HTTP redirection was not traversed to prevent payload execution.",
+        "No security observations reported in demo database for this URL."
+      ]
+    },
+    "correlated_evidence": [
+      {
+        "source": "Authentication",
+        "finding": "Email sender authentication failed (SPF FAIL, DMARC FAIL), indicating potential sender spoofing.",
+        "severity": "high",
+        "details": {
+          "spf": "FAIL",
+          "dkim": "NONE",
+          "dmarc": "FAIL"
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "URL",
+        "finding": "Detected 3 suspicious URL(s) exhibiting obfuscation, shorteners, or structural anomalies.",
+        "severity": "high",
+        "details": {
+          "suspicious_count": 3,
+          "total": 3
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "Forensic/Fingerprint",
+        "finding": "Sending environment fingerprinted as programmatic / automated sender tool: 'PHPMailer 6.1.8' (MIME boundary style: Generic Multipart).",
+        "severity": "info",
+        "details": {
+          "mailer": "PHPMailer 6.1.8",
+          "mailer_category": "Programmatic / Automated Sender",
+          "user_agent": "Not specified",
+          "mime_boundary_style": "Generic Multipart",
+          "charsets_detected": [
+            "utf-8"
+          ],
+          "languages_detected": [],
+          "fingerprint_summary": "Programmatic / Automated Sender ('PHPMailer 6.1.8'); MIME pattern: Generic Multipart; Charsets: utf-8",
+          "evidence_class": "HEURISTIC",
+          "charset_disclaimer": "Character encoding represents byte serialization format and operating system defaults; it does not indicate sender nationality or geographic location."
+        },
+        "channel": "forensic",
+        "evidence_class": "HEURISTIC"
+      },
+      {
+        "source": "Domain",
+        "finding": "Domain was registered within the last 30 days (19 days ago).",
+        "severity": "medium",
+        "details": {
+          "age_days": 19
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "Attachment",
+        "finding": "Email contains 1 dangerous or macro-enabled attachment(s).",
+        "severity": "high",
+        "details": {
+          "suspicious_count": 1
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT",
+        "finding": "Domain 'hdfcbank-secure.co.in' has 2 public security observation(s) reported by Mock/Demo.",
+        "severity": "high",
+        "details": {
+          "indicator": "hdfcbank-secure.co.in",
+          "observations": 2
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/Domain",
+        "finding": "Domain 'hdfcbank-secure.co.in' IP address changed.",
+        "severity": "medium",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/Domain",
+        "finding": "Domain 'hdfcbank-secure.co.in' has historical security detection(s). Use terminology: 'Previously detected' \u2014 not 'blocked globally'.",
+        "severity": "high",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/Domain",
+        "finding": "Domain 'hdfcbank-secure.co.in' is currently detected by at least one intelligence provider. This does not mean universally blocked.",
+        "severity": "high",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT",
+        "finding": "Observable infrastructure IP '185.234.219.47' has recorded security observations.",
+        "severity": "medium",
+        "details": {
+          "indicator": "185.234.219.47",
+          "observations": 2
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/IP",
+        "finding": "Observable mail infrastructure IP is hosted on known bulletproof provider.",
+        "severity": "medium",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/IP",
+        "finding": "Previous security observations detected in spam/phishing distributions.",
+        "severity": "medium",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT",
+        "finding": "URL 'http://bit.ly/3xHDFC-verify' previously reported in threat intelligence repositories.",
+        "severity": "high",
+        "details": {
+          "indicator": "http://bit.ly/3xHDFC-verify"
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "OSINT/URL",
+        "finding": "URL shortener mask detected with previous security observations.",
+        "severity": "high",
+        "details": {},
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "Domain History",
+        "finding": "Domain 'hdfcbank-secure.co.in' has historical infrastructure changes (2 observed IPs over time).",
+        "severity": "medium",
+        "details": {
+          "domain": "hdfcbank-secure.co.in",
+          "historical_ip_count": 2
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "PhishTank",
+        "finding": "URL 'http://bit.ly/3xHDFC-verify' is listed as a verified phishing URL in PhishTank (ID: 8901234).",
+        "severity": "high",
+        "details": {
+          "url": "http://bit.ly/3xHDFC-verify",
+          "phish_id": "8901234",
+          "type": "url_intelligence",
+          "title": "Known Phishing URL"
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      },
+      {
+        "source": "PhishTank",
+        "finding": "URL 'http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9' is listed as a verified phishing URL in PhishTank (ID: 8901236).",
+        "severity": "high",
+        "details": {
+          "url": "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+          "phish_id": "8901236",
+          "type": "url_intelligence",
+          "title": "Known Phishing URL"
+        },
+        "channel": "security",
+        "evidence_class": "DERIVED"
+      }
+    ],
+    "phishtank": {
+      "results": [
+        {
+          "url": "http://bit.ly/3xHDFC-verify",
+          "in_database": true,
+          "verified": true,
+          "valid": true,
+          "phish_id": "8901234",
+          "source": "Mock/Demo"
+        },
+        {
+          "url": "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+          "in_database": true,
+          "verified": true,
+          "valid": true,
+          "phish_id": "8901236",
+          "source": "Mock/Demo"
+        },
+        {
+          "url": "https://185.234.219.47/phish/hdfc/login.php",
+          "in_database": false,
+          "verified": false,
+          "valid": false,
+          "phish_id": null,
+          "source": "Mock/Demo"
+        }
+      ],
+      "verified_phishing_count": 2,
+      "source": "Mock/Demo",
+      "limitations": []
+    }
+  },
+  "forensic_anomalies": [
+    {
+      "source": "Forensic/Fingerprint",
+      "finding": "Sending environment fingerprinted as programmatic / automated sender tool: 'PHPMailer 6.1.8' (MIME boundary style: Generic Multipart).",
+      "severity": "info",
+      "details": {
+        "mailer": "PHPMailer 6.1.8",
+        "mailer_category": "Programmatic / Automated Sender",
+        "user_agent": "Not specified",
+        "mime_boundary_style": "Generic Multipart",
+        "charsets_detected": [
+          "utf-8"
+        ],
+        "languages_detected": [],
+        "fingerprint_summary": "Programmatic / Automated Sender ('PHPMailer 6.1.8'); MIME pattern: Generic Multipart; Charsets: utf-8",
+        "evidence_class": "HEURISTIC",
+        "charset_disclaimer": "Character encoding represents byte serialization format and operating system defaults; it does not indicate sender nationality or geographic location."
+      },
+      "channel": "forensic",
+      "evidence_class": "HEURISTIC"
+    }
+  ],
+  "correlated_evidence": [
+    {
+      "source": "Authentication",
+      "finding": "Email sender authentication failed (SPF FAIL, DMARC FAIL), indicating potential sender spoofing.",
+      "severity": "high",
+      "details": {
+        "spf": "FAIL",
+        "dkim": "NONE",
+        "dmarc": "FAIL"
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "URL",
+      "finding": "Detected 3 suspicious URL(s) exhibiting obfuscation, shorteners, or structural anomalies.",
+      "severity": "high",
+      "details": {
+        "suspicious_count": 3,
+        "total": 3
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "Forensic/Fingerprint",
+      "finding": "Sending environment fingerprinted as programmatic / automated sender tool: 'PHPMailer 6.1.8' (MIME boundary style: Generic Multipart).",
+      "severity": "info",
+      "details": {
+        "mailer": "PHPMailer 6.1.8",
+        "mailer_category": "Programmatic / Automated Sender",
+        "user_agent": "Not specified",
+        "mime_boundary_style": "Generic Multipart",
+        "charsets_detected": [
+          "utf-8"
+        ],
+        "languages_detected": [],
+        "fingerprint_summary": "Programmatic / Automated Sender ('PHPMailer 6.1.8'); MIME pattern: Generic Multipart; Charsets: utf-8",
+        "evidence_class": "HEURISTIC",
+        "charset_disclaimer": "Character encoding represents byte serialization format and operating system defaults; it does not indicate sender nationality or geographic location."
+      },
+      "channel": "forensic",
+      "evidence_class": "HEURISTIC"
+    },
+    {
+      "source": "Domain",
+      "finding": "Domain was registered within the last 30 days (19 days ago).",
+      "severity": "medium",
+      "details": {
+        "age_days": 19
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "Attachment",
+      "finding": "Email contains 1 dangerous or macro-enabled attachment(s).",
+      "severity": "high",
+      "details": {
+        "suspicious_count": 1
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT",
+      "finding": "Domain 'hdfcbank-secure.co.in' has 2 public security observation(s) reported by Mock/Demo.",
+      "severity": "high",
+      "details": {
+        "indicator": "hdfcbank-secure.co.in",
+        "observations": 2
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/Domain",
+      "finding": "Domain 'hdfcbank-secure.co.in' IP address changed.",
+      "severity": "medium",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/Domain",
+      "finding": "Domain 'hdfcbank-secure.co.in' has historical security detection(s). Use terminology: 'Previously detected' \u2014 not 'blocked globally'.",
+      "severity": "high",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/Domain",
+      "finding": "Domain 'hdfcbank-secure.co.in' is currently detected by at least one intelligence provider. This does not mean universally blocked.",
+      "severity": "high",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT",
+      "finding": "Observable infrastructure IP '185.234.219.47' has recorded security observations.",
+      "severity": "medium",
+      "details": {
+        "indicator": "185.234.219.47",
+        "observations": 2
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/IP",
+      "finding": "Observable mail infrastructure IP is hosted on known bulletproof provider.",
+      "severity": "medium",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/IP",
+      "finding": "Previous security observations detected in spam/phishing distributions.",
+      "severity": "medium",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT",
+      "finding": "URL 'http://bit.ly/3xHDFC-verify' previously reported in threat intelligence repositories.",
+      "severity": "high",
+      "details": {
+        "indicator": "http://bit.ly/3xHDFC-verify"
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "OSINT/URL",
+      "finding": "URL shortener mask detected with previous security observations.",
+      "severity": "high",
+      "details": {},
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "Domain History",
+      "finding": "Domain 'hdfcbank-secure.co.in' has historical infrastructure changes (2 observed IPs over time).",
+      "severity": "medium",
+      "details": {
+        "domain": "hdfcbank-secure.co.in",
+        "historical_ip_count": 2
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "PhishTank",
+      "finding": "URL 'http://bit.ly/3xHDFC-verify' is listed as a verified phishing URL in PhishTank (ID: 8901234).",
+      "severity": "high",
+      "details": {
+        "url": "http://bit.ly/3xHDFC-verify",
+        "phish_id": "8901234",
+        "type": "url_intelligence",
+        "title": "Known Phishing URL"
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    },
+    {
+      "source": "PhishTank",
+      "finding": "URL 'http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9' is listed as a verified phishing URL in PhishTank (ID: 8901236).",
+      "severity": "high",
+      "details": {
+        "url": "http://hdfc-secure-verify.co.in/login?redirect=account&token=eyJhbGciOiJSUzI1NiJ9",
+        "phish_id": "8901236",
+        "type": "url_intelligence",
+        "title": "Known Phishing URL"
+      },
+      "channel": "security",
+      "evidence_class": "DERIVED"
+    }
+  ]
+}
