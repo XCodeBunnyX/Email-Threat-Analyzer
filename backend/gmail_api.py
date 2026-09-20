@@ -278,6 +278,27 @@ async def analyze_gmail_message(message_id: str, gmail_session: str | None = Coo
                 status_code=500,
                 detail="Internal analysis error. The email could not be processed.",
             )
+
+        # Intelligent reasoning layer: Run Gemini AI analysis
+        try:
+            from gemini_service import run_gemini_analysis
+            report["gemini_analysis"] = run_gemini_analysis(raw_email=raw_email_str, report=report)
+        except Exception as e:
+            logger.warning("Gemini analysis invocation failed: %s", e)
+            report["gemini_analysis"] = {
+                "available": False,
+                "reason": "AI analysis unavailable",
+                "classification": "unavailable",
+                "risk_level": "unknown",
+                "confidence": 0,
+                "summary": "AI analysis unavailable",
+                "threat_indicators": [],
+                "social_engineering_indicators": [],
+                "suspicious_urls": [],
+                "suspicious_domains": [],
+                "recommended_actions": [],
+                "explanation": "Gemini AI analysis could not be completed.",
+            }
             
         return report
     except HttpError as error:

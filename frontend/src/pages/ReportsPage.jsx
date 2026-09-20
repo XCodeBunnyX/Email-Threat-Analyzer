@@ -69,9 +69,19 @@ export default function ReportsPage() {
   if (analysis.attachments) {
     findings.push({ label: "Attachments", value: analysis.attachments.count ?? 0, risk: (analysis.attachments.suspicious ?? 0) > 0 ? "high" : "clean" });
   }
+  if (analysis.gemini_analysis && analysis.gemini_analysis.available) {
+    const gem = analysis.gemini_analysis;
+    const isThreat = gem.classification === "phishing" || gem.classification === "suspicious";
+    findings.push({
+      label: "Gemini AI Verdict",
+      value: `${(gem.classification || "").toUpperCase()} (${gem.confidence || 0}% conf)`,
+      risk: isThreat ? "high" : "clean",
+    });
+  }
 
   const reportSections = [
     { key: "email", label: "Email Metadata", data: analysis.email },
+    { key: "gemini_analysis", label: "Gemini AI Intelligence Layer", data: analysis.gemini_analysis },
     { key: "authentication", label: "Authentication", data: analysis.authentication },
     { key: "infrastructure", label: "Infrastructure", data: analysis.infrastructure },
     { key: "domain", label: "Domain Intelligence", data: analysis.domain },

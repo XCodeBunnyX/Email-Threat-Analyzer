@@ -15,6 +15,7 @@ import MLAnalysis from "../components/MLAnalysis";
 import OSINTIntelligence from "../components/OSINTIntelligence";
 import ForensicIntelligence from "../components/ForensicIntelligence";
 import EvidenceCorrelationMap from "../components/EvidenceCorrelationMap";
+import GeminiAnalysisCard from "../components/GeminiAnalysisCard";
 import { getVerdictTheme, safeVal, formatDate } from "../utils/formatters";
 import { useAnalysis } from "../context/AnalysisContext";
 
@@ -90,6 +91,9 @@ export default function InvestigationPage() {
         <ThreatScore score={score} verdict={verdict} evidence={evidence} />
         <ScoreBreakdown subScores={subScores} weightsUsed={weightsUsed} />
       </div>
+
+      {/* Gemini AI Contextual Security Analysis Layer */}
+      <GeminiAnalysisCard gemini={analysis.gemini_analysis} />
 
       {/* Row 2: Evidence Correlation Flow */}
       <EvidenceCorrelationMap analysis={analysis} />

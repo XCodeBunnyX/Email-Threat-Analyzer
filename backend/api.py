@@ -177,6 +177,27 @@ async def analyze_email_endpoint(
             status_code=500,
         )
 
+    # ── Intelligent reasoning layer: Run Gemini AI analysis ──────
+    try:
+        from gemini_service import run_gemini_analysis
+        report["gemini_analysis"] = run_gemini_analysis(raw_email=raw_email, report=report)
+    except Exception as e:
+        logger.warning("Gemini analysis invocation failed: %s", e)
+        report["gemini_analysis"] = {
+            "available": False,
+            "reason": "AI analysis unavailable",
+            "classification": "unavailable",
+            "risk_level": "unknown",
+            "confidence": 0,
+            "summary": "AI analysis unavailable",
+            "threat_indicators": [],
+            "social_engineering_indicators": [],
+            "suspicious_urls": [],
+            "suspicious_domains": [],
+            "recommended_actions": [],
+            "explanation": "Gemini AI analysis could not be completed.",
+        }
+
     return report
 
 

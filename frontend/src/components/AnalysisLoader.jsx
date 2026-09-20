@@ -8,6 +8,7 @@ const SCAN_STEPS = [
   "Conducting static URL inspection and PhishTank lookup...",
   "Analyzing attachments for disguised executables & macros...",
   "Correlating cross-vector indicators and scoring threat model...",
+  "Gemini AI is analyzing email content & threat indicators...",
 ];
 
 export default function AnalysisLoader() {
